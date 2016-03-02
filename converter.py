@@ -6,8 +6,8 @@ class Converter:
 
 		matchObj = re.match( r'etre\(([^,]*),([^,]*)\)', str(histoireLine), re.M|re.I)
 		if matchObj:
-		   who =  matchObj.group(1)
-		   is_what = matchObj.group(2)
-		fact = "(" + who + " est un " + is_what + ")"
+		  return ("(" + matchObj.group(1) + " est un " + matchObj.group(2) + ")")
 
-		print (fact)
+		matchObj = re.match( r'etre\(([NOT,]*),([^,]*),([^,]*)\)', str(histoireLine), re.M|re.I)
+		if matchObj:
+		  return ""
