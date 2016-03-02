@@ -11,3 +11,7 @@ class Converter:
 		matchObj = re.match( r'etre\(([NOT,]*),([^,]*),([^,]*)\)', str(histoireLine), re.M|re.I)
 		if matchObj:
 		  return ""
+
+		matchObj = re.match( r'etre\(([NOT,]*),([^,]*),([^,]*)\)', str(histoireLine), re.M|re.I)
+		if matchObj:
+		  return ""
