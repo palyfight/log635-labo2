@@ -19,7 +19,7 @@ class Converter:
 
 		regexLine = re.match(r'but\(devenir\((.*?)\)\) & prendre\(([^,]*),([^,]*)\)', str(histoireLine)[1:-1], re.M | re.I)
 		if regexLine:
-			return ("(" + regexLine.group(2) + " prend " + regexLine.group(1) + " de " + regexLine.group(1) + ")")
+			return ("(" + regexLine.group(2) + " prend " + regexLine.group(3) + " de " + regexLine.group(1) + ")")
 
 
 		regexLine = re.match(r'avant_temps\((.*?)\) & loc\((.*?)\) & doit\(etre\((.*?)\)\)', str(histoireLine)[1:-1], re.M | re.I)

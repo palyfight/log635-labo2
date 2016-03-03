@@ -10,7 +10,9 @@ class JessWriter:
 
 		file.write(fileContent)
 
-		file.write(")")
+		file.write(") \n")
+
+		file.write("(run)")
 
 		file.close()
 		
