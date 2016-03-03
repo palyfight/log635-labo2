@@ -4,16 +4,22 @@ class Converter:
 
 	def jessConverter(self, histoireLine):
 
+		pronom = ["il", "elle", "on"]
+		lastNoun = ""
+
 		regexLine = re.match( r'etre\(([^,]*),([^,]*)\)', str(histoireLine), re.M | re.I)
 		if regexLine:
+			lastNoun = regexLine.group(1)
 			return ("(" + regexLine.group(1) + " est " + regexLine.group(2) + ")")
 
-		regexLine = re.match( r'etre\(([NOT,]*),([^,]*),([^,]*)\)', str(histoireLine), re.M | re.I)
+		regexLine = re.match( r'etre\(([^,]*),([NOT,]*),([^,]*)\)', str(histoireLine), re.M | re.I)
 		if regexLine:
-			return ("")
+			lastNoun = regexLine.group(3)
+			return ("(" + regexLine.group(3) + " " + regexLine.group(2) + " " + regexLine.group(1) + ")")
 
 		regexLine = re.match(r'temps\((.*?)\) & loc\((.*?)\) & voir\(([^,]*),([^,]*)\)', str(histoireLine)[1:-1], re.M | re.I)
 		if regexLine:
+			lastNoun = regexLine.group(4)
 			return ("(" + regexLine.group(4) + " vu " +   regexLine.group(3) + " au " +  regexLine.group(2) + " a " +  regexLine.group(1) + ")")
 
 
@@ -56,3 +62,15 @@ class Converter:
 			fisrtFact = "(" + regexLine.group(6) + " doit jouer au " +  regexLine.group(5) + " avec " +  regexLine.group(1) + ")" + "\n\t"
 			secondFact = "(" + regexLine.group(4) + " est au " +  regexLine.group(3) + " avec " +  regexLine.group(2) + ")"
 			return (fisrtFact + secondFact)
+
+		regexLine = re.match(r'terme\(marcher\(([^,]*),([^,]*),([^,]*)\)\) & terme\(aime\(([^,]*),prendre\(\(with\(([^,]*)\) & ([^,]*)\)\)\)\)', str(histoireLine)[1:-1], re.M | re.I)
+		if regexLine:
+			fisrtFact = "(" + regexLine.group(4) + " aime prendre " +  regexLine.group(6) + " avec " +  regexLine.group(5) + ")\n\t"
+			secondFact = "(" + regexLine.group(3) + " " + regexLine.group(6) + " " + regexLine.group(2) + " " + regexLine.group(1) + ")"  
+			return (fisrtFact + secondFact)
+
+		return "Regex parsing error"
+
+
+
+			

@@ -2,6 +2,7 @@
 (deffacts history-facts 
 	(Philippe est cuisinier)
 	(Anousone est etudiant)
+	(Christian NOT pilote)
 	(Philippe vu Christian au magasin a 16h)
 	(Philippe prend cours de pilote)
 	(Christian doit etre a ecole avant 12h)
@@ -13,5 +14,7 @@
 	(elle est excellent)
 	(Philippe mange des banane a la maison)
 	(il mange des banane quotidiennement)
+	(Christian aime prendre marche avec ami)
+	(il marche NOT vite)
 ) 
 (run)
