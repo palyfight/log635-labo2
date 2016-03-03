@@ -4,34 +4,49 @@ class Converter:
 
 	def jessConverter(self, histoireLine):
 
-		matchObj = re.match( r'etre\(([^,]*),([^,]*)\)', str(histoireLine), re.M | re.I)
-		if matchObj:
-			print ("(" + matchObj.group(1) + " est un " + matchObj.group(2) + ")")
+		regexLine = re.match( r'etre\(([^,]*),([^,]*)\)', str(histoireLine), re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(1) + " est " + regexLine.group(2) + ")")
 
-		matchObj = re.match( r'etre\(([NOT,]*),([^,]*),([^,]*)\)', str(histoireLine), re.M | re.I)
-		if matchObj:
+		regexLine = re.match( r'etre\(([NOT,]*),([^,]*),([^,]*)\)', str(histoireLine), re.M | re.I)
+		if regexLine:
 			print ("")
 
-		matchObj = re.match(r'temps\((.*?)\) & loc\((.*?)\) & voir\(([^,]*),([^,]*)\)', str(histoireLine)[1:-1], re.M | re.I)
-		if matchObj:
-			print ("(" + matchObj.group(4) + " vu " +   matchObj.group(3) + " au " +  matchObj.group(2) + " a " +  matchObj.group(1) + ")")
+		regexLine = re.match(r'temps\((.*?)\) & loc\((.*?)\) & voir\(([^,]*),([^,]*)\)', str(histoireLine)[1:-1], re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(4) + " vu " +   regexLine.group(3) + " au " +  regexLine.group(2) + " a " +  regexLine.group(1) + ")")
 
 
-		matchObj = re.match(r'but\(devenir\((.*?)\)\) & prendre\(([^,]*),([^,]*)\)', str(histoireLine)[1:-1], re.M | re.I)
-		if matchObj:
-			print ("(" + matchObj.group(3) + " prend " + matchObj.group(2) + " de " + matchObj.group(1) + ")")
+		regexLine = re.match(r'but\(devenir\((.*?)\)\) & prendre\(([^,]*),([^,]*)\)', str(histoireLine)[1:-1], re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(3) + " prend " + regexLine.group(2) + " de " + regexLine.group(1) + ")")
 
 
-		matchObj = re.match(r'avant_temps\((.*?)\) & loc\((.*?)\) & doit\(etre\((.*?)\)\)', str(histoireLine)[1:-1], re.M | re.I)
-		if matchObj:
-			print ("(" + matchObj.group(3) + " doit etre a " + matchObj.group(2) + " avant " + matchObj.group(1) + ")")
+		regexLine = re.match(r'avant_temps\((.*?)\) & loc\((.*?)\) & doit\(etre\((.*?)\)\)', str(histoireLine)[1:-1], re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(3) + " doit etre a " + regexLine.group(2) + " avant " + regexLine.group(1) + ")")
 
 
-		matchObj = re.match(r'until\(arrivee\((.*?)\)\) & loc\((.*?)\) & doit\(rester\((.*?)\)\)', str(histoireLine)[1:-1], re.M | re.I)
-		if matchObj:
-			print ("(" + matchObj.group(3) + " attend " + matchObj.group(1) + " a " + matchObj.group(2) + ")")
+		regexLine = re.match(r'until\(arrivee\((.*?)\)\) & loc\((.*?)\) & doit\(rester\((.*?)\)\)', str(histoireLine)[1:-1], re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(3) + " attend " + regexLine.group(1) + " a " + regexLine.group(2) + ")")
 
 
-		matchObj = re.match(r'voir\(\(with\((.*?)\) & (.*)\),facher\((.*?)\)', str(histoireLine), re.M | re.I)
-		if matchObj:
-			print ("(" + matchObj.group(3) + " facher de voir " +  matchObj.group(1) + " avec "+  matchObj.group(2) + ")")
+		regexLine = re.match(r'voir\(\(with\((.*?)\) & (.*)\),facher\((.*?)\)', str(histoireLine), re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(3) + " facher de voir " +  regexLine.group(1) + " avec "+  regexLine.group(2) + ")")
+
+
+		regexLine = re.match(r'avant\(quitter\(loc\((.*?)\)\)\) & manger\(([^,]*),([^,]*)\)', str(histoireLine)[1:-1], re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(2) + " mange des " +  regexLine.group(3) + " a la " +  regexLine.group(1) + ")")
+
+
+		regexLine = re.match(r'manger\(([^,]*),([^,]*)\) & (.*)', str(histoireLine)[1:-1], re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(1) + " mange des " +  regexLine.group(2) + " " +  regexLine.group(3) + ")")
+
+
+		regexLine = re.match(r'jouer\(\(with\(([^,]*)\) & ([^,]*)\),(.*)\)', str(histoireLine), re.M | re.I)
+		if regexLine:
+			print ("(La " + regexLine.group(3) + " joue au " +  regexLine.group(2) + " avec " +  regexLine.group(1) + ")")
