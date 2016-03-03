@@ -50,3 +50,8 @@ class Converter:
 		regexLine = re.match(r'jouer\(\(with\(([^,]*)\) & ([^,]*)\),(.*)\)', str(histoireLine), re.M | re.I)
 		if regexLine:
 			print ("(La " + regexLine.group(3) + " joue au " +  regexLine.group(2) + " avec " +  regexLine.group(1) + ")")
+
+		regexLine = re.match(r'terme\(etre\((.*),\(with\((.*?)\) & loc\((.*?)\)\)\)\) & terme\(doit\(jouer\(\(with\((.*?)\) & (.*)\)\),(.*)\)\)', str(histoireLine)[1:-1], re.M | re.I)
+		if regexLine:
+			print ("(" + regexLine.group(6) + " doit jouer au " +  regexLine.group(5) + " avec " +  regexLine.group(1) + ")")
+			print ("(" + regexLine.group(4) + " est au " +  regexLine.group(3) + " avec " +  regexLine.group(2) + ")")
