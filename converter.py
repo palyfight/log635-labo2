@@ -25,3 +25,13 @@ class Converter:
 		matchObj = re.match(r'avant_temps\((.*?)\) & loc\((.*?)\) & doit\(etre\((.*?)\)\)', str(histoireLine)[1:-1], re.M | re.I)
 		if matchObj:
 			print ("(" + matchObj.group(3) + " doit etre a " + matchObj.group(2) + " avant " + matchObj.group(1) + ")")
+
+
+		matchObj = re.match(r'until\(arrivee\((.*?)\)\) & loc\((.*?)\) & doit\(rester\((.*?)\)\)', str(histoireLine)[1:-1], re.M | re.I)
+		if matchObj:
+			print ("(" + matchObj.group(3) + " attend " + matchObj.group(1) + " a " + matchObj.group(2) + ")")
+
+
+		matchObj = re.match(r'voir\(\(with\((.*?)\) & (.*)\),facher\((.*?)\)', str(histoireLine), re.M | re.I)
+		if matchObj:
+			print ("(" + matchObj.group(3) + " facher de voir " +  matchObj.group(1) + " avec "+  matchObj.group(2) + ")")
