@@ -24,9 +24,11 @@ for phrase in histoireText:
 	trees = parser.parse(tokens)
 	
 	for tree in trees:
-	    print(tree)
-	    fileContent += "\t" + converter.jessConverter(tree.label()['SEM']) + "\n"
+	    #print(tree)
 	    #nltk.draw.tree.draw_trees(tree)
-	    print(tree.label()['SEM'])
+	    terms = [x for x in (str(tree.label()['SEM']).split('terme')) if len(x) > 1]
+	    for term in reversed(terms) :
+	    	print(term)
+	    	fileContent += "\t" + converter.jessConverter(term) + "\n"
 
 	jessWriter.writeFile(fileContent)
